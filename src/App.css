@@ -1,0 +1,425 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', serif;
+  font-size: 13px;
+
+}
+
+
+
+/*Header*/
+.mucluc {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  justify-content: space-between;
+  padding: 1%;
+}
+
+.danhsach {
+  width: 72%;
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.item {
+  display: inline-block;
+  padding: 1%;
+  font-weight: 600;
+}
+
+.buttonlogin {
+  margin: auto;
+  text-align: center;
+  width: 14%;
+}
+
+.btnlogin {
+  margin: auto;
+  text-align: center;
+}
+
+
+.logo {
+  width: 14%;
+  display: flex;
+  margin: auto;
+  text-align: center;
+}
+
+.content {
+  text-decoration: none;
+  color: black;
+}
+
+.nameul {
+  margin: 0;
+  padding: 0;
+}
+
+
+/*Footer*/
+footer {
+  background-color: #121214;
+  background-image: url(https://www.vsmart.net/themes/porto/img/vinsmart/back-fot.png);
+  background-size: 100% 100%;
+  border-top: #B3A078 6px solid;
+  overflow: auto;
+}
+
+.bo2 {
+  width: 100%;
+  display: block;
+  border-bottom: 2px solid #3f3f40;
+
+}
+
+.chau1 {
+  margin: auto;
+  text-align: center;
+}
+
+.chau2 {
+  margin: auto;
+  text-align: center;
+}
+
+.icon {
+  display: inline-block;
+}
+
+.content-icon {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: 'UTM Akashi';
+}
+
+.chat {
+  display: inline-table;
+  width: 30%;
+  text-align: center;
+  margin: auto;
+  color: white;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.bo3 {
+  width: 100%;
+  padding-top: 3%;
+  margin: auto;
+  text-align: center;
+  border-bottom: 2px solid #3f3f40;
+}
+
+.conbo3 {
+  display: inline-table;
+  width: 15%;
+  color: rgba(170, 161, 161, 0.823);
+  margin: auto;
+  text-align: left;
+  padding-bottom: 3%;
+}
+
+.headingconbo3 {
+  color: white;
+  color: #CC9036;
+  font-size: 13px;
+  line-height: 30px;
+}
+
+.content-icon:hover {
+  color: #CC9036;
+  text-decoration: underline;
+}
+
+.dt {
+  padding-bottom: 5%;
+}
+
+.dt:hover {
+  opacity: 100%;
+  text-decoration: underline;
+  padding-left: 5px;
+  color: white;
+}
+
+.bo4 {
+  width: 100%;
+  text-align: center;
+}
+
+.child {
+  display: inline-block;
+  width: 30%;
+}
+
+
+/*Pagination*/
+
+.cuto {
+  width: 80%;
+  margin: auto;
+  background-color: #f8f8f8;
+  text-align: center;
+  padding-top: 3%;
+}
+
+.name {
+  color: red;
+}
+
+.pagination>li {
+  list-style: none;
+  border: 0.3px solid;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+  float: left;
+  padding: 8px 20px;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  margin-left: -1px;
+}
+
+.pagination>li.active>a {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.pagination>li>a:hover {
+  background-color: #218838;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span {
+  margin-left: 0;
+}
+
+.img-wrapper {
+  display: inline-table;
+  width: 23%;
+  padding: 2%;
+  text-align: left;
+}
+
+.img-wrapper img {
+  width: 100%;
+}
+
+.img-wrapper p {
+  margin: 0;
+}
+
+.categorypost {
+  font-size: 14px;
+  opacity: 70%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+button {
+  background: #fafafa;
+  border: 1px solid #eaeaea;
+  padding: 0.7rem 1.2rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #eaeaea;
+}
+
+p {
+  font-size: 1rem;
+  margin: 0 1rem;
+}
+
+
+/*Search bar*/
+
+input[type="search"] {
+  border: none;
+  background: transparent;
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
+  border: 1px solid red;
+  border-radius: 3%;
+  width: 32%;
+  height: 45px;
+  text-align: left;
+}
+
+input[type="search"]::placeholder {
+  color: #bbb;
+}
+
+input[type="search"]:focus {
+  box-shadow: 0 0 3px 0 #1183d6;
+  border-color: #1183d6;
+  outline: none;
+}
+
+/* Css search */
+.search {
+  width: 30%;
+}
+
+.topnav {
+  margin-left: 10%;
+}
+
+.topnav input {
+  width: 60%;
+  height: 40px;
+}
+
+.dataResult {
+  position: absolute;
+  background-color: white;
+  width: 14%;
+  margin-left: 6.5%;
+}
+.dataResult img{
+  width: 100px;
+  height: 100px;
+}
+.dataItem {
+  text-decoration: none;
+}
+
+
+
+/**/
+ul {
+  list-style: none;
+}
+
+.item-lv1 {
+  display: flex;
+  margin: auto;
+  text-align: center;
+}
+
+.namelocal {
+  width: 100%;
+  font-size: 16px;
+  margin: auto;
+  text-align: center;
+}
+
+.item-lv1:hover {
+  background-color: rgb(224, 224, 224);
+}
+
+.item-lv1:hover .menu-lv2 {
+  display: block;
+}
+
+.item-lv1 .title-menu-lv1 {
+  display: inline-block;
+  padding-right: 3%;
+}
+
+.menu-lv2 {
+  position: absolute;
+  background-color: white;
+  display: none;
+  right: 5px;
+  padding: 1%;
+  z-index: 100;
+  margin-top: 1.6%;
+  text-align: right;
+}
+
+.item-lv2 {
+  padding-top: 2%;
+}
+
+li>a {
+  text-decoration: none;
+  color: black;
+}
+.img-detail{
+  display: flex;
+}
+.detailimg{
+  width:50%;
+  display: flex;
+}
+.img-detail img{
+  width: 500px;
+  height: 400px;
+}
+.detail{
+  margin: auto;
+  text-align: left;
+  padding-left: 5%;
+}
+
