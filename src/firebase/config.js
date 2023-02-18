@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {
   GoogleAuthProvider,
@@ -7,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
-  signOut,onAuthStateChanged
+  signOut, onAuthStateChanged,deleteUser
 } from "firebase/auth";
 import {
   getFirestore,
@@ -17,7 +16,7 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
-import { getStorage,ref } from 'firebase/storage'
+import { getStorage, ref } from 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDpQX1oZoCK_1-uY2qzIx5-VSVlbAwmM5M",
@@ -57,9 +56,10 @@ const signInWithGoogle = async () => {
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
+    window.location.href = ('/')
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    alert('Sai Email hoặc mật khẩu');
   }
 };
 const registerWithEmailAndPassword = async (name, email, password) => {
@@ -71,21 +71,32 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       name,
       authProvider: "local",
       email,
-      password:password,
+      password: password,
       role: "user"
     });
+    window.location.href = ('/login')
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    alert('Email đã tồn tại');
   }
 };
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
-    alert("Password reset link sent!");
-  } catch (err) {
+    alert("Đã gửi mật khẩu mới đến Email của bạn!");
+    window.location.href('/login')
+  }
+  catch (err) {
     console.error(err);
-    alert(err.message);
+    alert('Email không tồn tại');
+  }
+};
+const deleteAccount = async (email) => {
+  try {
+    await deleteUser(email)
+  } catch (error) {
+    console.error(error)
+    alert(error.message)
   }
 };
 const logout = () => {
@@ -99,6 +110,6 @@ export {
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordReset,
-  logout,onAuthStateChanged,
+  logout, onAuthStateChanged,deleteAccount
 };
 

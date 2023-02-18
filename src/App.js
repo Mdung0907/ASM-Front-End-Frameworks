@@ -27,6 +27,7 @@ import {
 import './Component/Infomation.css'
 import ManageMentUser from './componentfirebase/Account/ManagementUser';
 import Cart from './componentfirebase/cart/cart';
+import FormForgot from './componentfirebase/Account/ForgotPassword';
 function App() {
   const [data, setdata] = useState([])
   const log = useRef(true)
@@ -61,6 +62,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Posts emailnow={data} />} />
         <Route path='login' element={<Login />} />
+        <Route path='forgotpassword' element={<FormForgot />} />
         <Route path='register' element={<Register />} />
         <Route path="/detail/:id" element={<PostDetail />} />
         <Route path='management' element={<ManageMent current={data}/>} />

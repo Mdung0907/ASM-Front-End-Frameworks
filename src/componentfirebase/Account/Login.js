@@ -20,7 +20,6 @@ function FormLogin() {
         event.stopPropagation();
       } else {
         logInWithEmailAndPassword(email, password)
-        navigate('/')
       }
       setValidated(true)
     }}>
@@ -28,7 +27,7 @@ function FormLogin() {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email</Form.Label>
         <Form.Control required type="email" placeholder="Nhập Email" onChange={e => { setEmail(e.target.value) }} />
-        <Form.Control.Feedback type="alid">
+        <Form.Control.Feedback >
         </Form.Control.Feedback>
         <Form.Control.Feedback type="invalid">
           Vui lòng nhập email.
@@ -37,7 +36,7 @@ function FormLogin() {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Mật khẩu</Form.Label>
-        <Form.Control required type="password" placeholder="Nhập mật khẩu" onChange={e => { setpassword(e.target.value) }} />
+        <Form.Control required type="password" placeholder="Nhập mật khẩu" onChange={e => { setpassword(e.target.value) }}/>
         <Form.Control.Feedback type="invalid">
         </Form.Control.Feedback>
         <Form.Control.Feedback type="invalid">
@@ -45,7 +44,8 @@ function FormLogin() {
         </Form.Control.Feedback>
       </Form.Group>
 
-
+      <Link to={'/forgotpassword'} style={{ color: 'black', textDecoration: 'none' }}>Quên mật khẩu?</Link>
+      <br></br>
       <Link to={'/register'} style={{ color: 'black', textDecoration: 'none' }}>Đăng kí tài khoản</Link>
       <br></br>
       <br></br>

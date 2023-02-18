@@ -7,7 +7,7 @@ import ProductDataService from "../service/product-services";
 import { toast } from 'react-toastify';
 const AddProduct = ({ current, isShow, handleClose ,Reload}) => {
     const [name, setname] = useState('');
-    const [file, setfile] = useState('');
+    const [file, setfile] = useState();
     const [price, setprice] = useState('');
     const [category, setcategory] = useState('');
     const [description, setdescription] = useState('');

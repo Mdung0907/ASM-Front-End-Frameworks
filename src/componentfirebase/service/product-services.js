@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { async } from "@firebase/util";
+import { toast } from "react-toastify";
 
 const ProductCollectionRef = collection(db, "products");
 const Category = collection(db, "category");
@@ -22,7 +23,7 @@ class ProductDataService {
             const uploadTask = uploadBytesResumable(storageRef, file);
             uploadTask.on(
                 (error) => {
-                    alert(error.message);
+                    toast.error(error.message);
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {

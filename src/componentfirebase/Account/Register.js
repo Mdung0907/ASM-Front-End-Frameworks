@@ -67,13 +67,18 @@ function FormRegister() {
       const form = e.currentTarget;
       if (form.checkValidity() === false) {
         e.stopPropagation();
-      } else { if (Checkmk(password) || CheckConfilmPass(password, confilmpassword)) { return } else { registerWithEmailAndPassword(name, email, password);alert('Đăng kí thành công'); navigate('/login') } }
+      } else {
+        if (Checkmk(password) || CheckConfilmPass(password, confilmpassword)) { return }
+        else {
+          registerWithEmailAndPassword(name, email, password); 
+        }
+      }
       setValidated(true);
     }
     }>
       <Form.Group className="mb-3" controlId="idname">
         <Form.Label>Tên</Form.Label>
-        <Form.Control required type="text" onChange={e => { setname(e.target.value) }} name="name" placeholder="Nguyễn Văn A..." />
+        <Form.Control required type="text" onChange={e => { setname(e.target.value) }} name="name" placeholder="Nguyễn Văn A..."/>
         <Form.Control.Feedback type="invalid">
           Vui lòng nhập tên.
         </Form.Control.Feedback>

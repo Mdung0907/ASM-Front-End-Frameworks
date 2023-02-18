@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
-import { useEffect, useState, useRef } from "react";
+import {  useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { updateProfile, updateEmail, updatePassword } from 'firebase/auth';
 import AccountDataService from '../service/account-service'
 import { auth } from '../../firebase/config';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import {
+    deleteAccount,
+  } from "../../firebase/config";
+
 
 function Information({ currentUser }) {
     const [ischeck, setischeck] = useState(false)
@@ -48,6 +51,8 @@ function Information({ currentUser }) {
         } else {
             return (
                 <button style={{ color: 'red' }} onClick={async () => {
+                    // deleteAccount(currentUser)
+                    
                 }}>Xóa tài khoản</button>
             )
         }

@@ -91,7 +91,7 @@ function Posts({ emailnow }) {
             {currenPost && currenPost.map((post) => {
               return (
                 <div className="img-wrapper" key={post.id} >
-                  <img src={post?.downloadURL} />
+                  <img src={post?.downloadURL}/>
                   <p className="categorypost">Điện thoại</p>
                   <p className="name">
                     <Link to={`/detail/${post.id}`} style={{ textDecoration: 'none', color: 'black', fontWeight: '600' }}> {post.name}</Link></p>
