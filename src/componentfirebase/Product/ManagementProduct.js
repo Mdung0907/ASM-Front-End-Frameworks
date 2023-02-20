@@ -7,9 +7,9 @@ import ProductDataService from "../service/product-services";
 import Update from './UpdateProduct.js';
 import { toast } from 'react-toastify';
 
-function ManageMent({current}) {
+function ManageMent({ current }) {
     const [datanew, setdata] = useState([])
-    const [cate, setcate] = useState({})
+    const [cate, setcate] = useState([])
     const [isOpenCreate, setisOpenCreate] = useState(false);
     const [isOpenUpdate, setisOpenUpdate] = useState(false);
     const [wordEntered, setWordEntered] = useState("");
@@ -19,6 +19,7 @@ function ManageMent({current}) {
         if (log.current) {
             log.current = false
             fectProduct()
+            fectcategory()
         }
     }, []);
 
@@ -27,6 +28,15 @@ function ManageMent({current}) {
         setdata(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 
+    const fectcategory = async () => {
+        const data2=await ProductDataService.getAllCategorys()
+        setcate(data2.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    function getNameCategory(id){
+        const check=cate.filter((item)=>item.id===id)
+        return check[0].name
+    }
 
     const deleteHandler = async (proid) => {
         await ProductDataService.deleteProduct(proid);
@@ -77,11 +87,11 @@ function ManageMent({current}) {
                 <button onClick={() => setisOpenCreate(!isOpenCreate)}>Tạo mới</button>
                 <AddProduct current={current} isShow={isOpenCreate}
                     handleClose={() => setisOpenCreate(false)
-                    } id={proid} 
+                    } id={proid}
                     Reload={fectProduct}
                 />
                 <Update propsid={proid} isShow={isOpenUpdate}
-                    handleClose={() => setisOpenUpdate(false)}  onReload={fectProduct}
+                    handleClose={() => setisOpenUpdate(false)} onReload={fectProduct}
                 />
                 <button onClick={fectProductasc}>Sắp xếp tăng theo giá</button>
                 <button onClick={fectProductdesc}>Sắp xếp giảm theo giá</button>
@@ -102,10 +112,11 @@ function ManageMent({current}) {
                     {datanew && datanew.map((item) => {
                         return (
                             <tr key={item.id}>
+                                
                                 <td width='10%'>{item.name}</td>
                                 <td width="10%"><img src={item.downloadURL} width="100%" /></td>
                                 <td width='10%'>{item.price}</td>
-                                <td width='10%'>{item.category}</td>
+                                <td width='10%'>{getNameCategory(item.category)}</td>
                                 <td width='50%'>{item.description}</td>
                                 <td width={'10%'} style={{ textAlign: 'center' }}><AiFillDelete onClick={(e) => { setproid(item?.id); deleteHandler(item?.id) }}
                                     style={{ fontSize: '30px' }} ></AiFillDelete>
@@ -114,13 +125,14 @@ function ManageMent({current}) {
                                             () => {
                                                 setproid(item?.id)
                                                 setisOpenUpdate(!isOpenUpdate)
-                                    
+
                                             }
                                         }
                                     >
                                     </BiEdit></td>
 
                             </tr>)
+                        
                     })}
 
                 </tbody>

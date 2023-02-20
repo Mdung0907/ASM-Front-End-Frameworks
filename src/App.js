@@ -60,15 +60,15 @@ function App() {
     <div>
       <Header authen={data} />
       <Routes>
-        <Route path='/' element={<Posts emailnow={data} />} />
+        <Route path='/' element={<Posts currentUser={data} />} />
         <Route path='login' element={<Login />} />
         <Route path='forgotpassword' element={<FormForgot />} />
         <Route path='register' element={<Register />} />
-        <Route path="/detail/:id" element={<PostDetail />} />
+        <Route path="/detail/:id" element={<PostDetail currentUser={data}/>} />
         <Route path='management' element={<ManageMent current={data}/>} />
         <Route path='infomation' element={<Information currentUser={data} />} />
         <Route path='managementuser' element={<ManageMentUser />} />
-        <Route path='cart' element={<Cart />} />
+        <Route path='cart' element={<Cart currentUser={data}/>} />
         <Route path='*' element={<NoPage />} />
       </Routes>
       <Footer />

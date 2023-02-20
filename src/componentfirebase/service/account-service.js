@@ -7,7 +7,7 @@ import {
     addDoc,
     updateDoc,
     deleteDoc,
-    doc,where, query
+    doc,where, query,orderBy
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { async } from "@firebase/util";
@@ -20,7 +20,7 @@ const AccountCollectionRef = collection(db, "users");
 class AccountDataService {
 
     deleteAccount = (id) => {
-        const AccountDoc = doc(db, "users", id);
+        const AccountDoc = doc(AccountCollectionRef, id);
         return deleteDoc(AccountDoc);
     };
 
@@ -28,12 +28,18 @@ class AccountDataService {
         return getDocs(AccountCollectionRef);
     };
     updateAccounts = async (id, account) => {
-        const AccountDoc = doc(db, "users", id);
+        const AccountDoc = doc(AccountCollectionRef, id);
         return updateDoc(AccountDoc, account)
     }
     getAccount = (id) => {
-        const AccountDoc = doc(db, "users", id);
+        const AccountDoc = doc(AccountCollectionRef, id);
         return getDoc(AccountDoc);
+    };
+    getAllAccountsASC = () => {
+        return getDocs(query(AccountCollectionRef, orderBy('name', 'asc')));
+    };
+    getAllAccountsDESC = () => {
+        return getDocs(query(AccountCollectionRef, orderBy('name', 'desc')));
     };
 
 }

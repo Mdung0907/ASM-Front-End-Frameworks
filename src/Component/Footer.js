@@ -97,15 +97,15 @@ export default function Footer() {
                                         <li className="dt">
                                             <p>Star4+</p>
                                         </li>
-                                        <li className="dt">
+                                        {/* <li className="dt">
                                             <p>Active+</p>
                                         </li>
                                         <li className="dt">
                                             <p>Joy3+</p>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
-                                <div className="daydt2">
+                                {/* <div className="daydt2">
                                     <ul>
                                         <li className="dt">
                                             <p>Star3+</p>
@@ -126,7 +126,7 @@ export default function Footer() {
                                             <p>Bee</p>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="conbo3">
@@ -146,9 +146,9 @@ export default function Footer() {
                                 <li className="dt">
                                     <p>50KD6800</p>
                                 </li>
-                                <li className="dt">
+                                {/* <li className="dt">
                                     <p>43KD6600</p>
-                                </li>
+                                </li> */}
 
                             </ul>
                         </div>
@@ -192,12 +192,12 @@ export default function Footer() {
                                 <li className="dt">
                                     <p>Trung tâm bảo hành</p>
                                 </li>
-                                <li className="dt">
+                                {/* <li className="dt">
                                     <p>Chính sách bảo mật</p>
-                                </li>
-                                <li className="dt">
+                                </li> */}
+                                {/* <li className="dt">
                                     <p>Điều khoản chính sách</p>
-                                </li>
+                                </li> */}
 
                             </ul>
                         </div>

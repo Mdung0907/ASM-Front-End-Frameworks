@@ -1,28 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col, Button, Table } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { callAPI } from '../../Component/API'
-const Cart = () => {
+import ProductDataServiceCart from "../service/product-services-tocart";
+import ProductDataService from "../service/product-services";
+const Cart = ({ currentUser }) => {
   const [data, setdata] = useState([])
-
-  const log = useRef(true)
+  const [cate, setcate] = useState([])
   useEffect(() => {
-    if (log.current) {
-      log.current = false
-      FectPost()
-    }
+    fectProductcart()
+    fectcategory()
   }, []);
-  const FectPost = async () => {
-    try {
-      const response = await callAPI(`/products`, "GET");
-      setdata(response)
-      console.log(response)
-    } catch (error) {
-      console.error(error);
-    }
+
+  const fectProductcart = async () => {
+    const data2 = await ProductDataServiceCart.getAllproductcartEmail(currentUser.email);
+    console.log(data2.docs);
+    setdata(data2.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
+  const fectcategory = async () => {
+    const data2 = await ProductDataService.getAllCategorys()
+    setcate(data2.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
+  function getNameCategory(id) {
+    const check = cate.filter((item) => item.id === id)
+    return check[0].name
   }
-
-
 
   return (
     <Container>
@@ -38,33 +41,49 @@ const Cart = () => {
                 <th>Số lượng</th>
                 <th>Hình ảnh</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               {data.map((item) => (
                 <tr key={item.id}>
                   <td>{item.name}</td>
-                  <td>{item.category}</td>
+                  <td>{getNameCategory(item.category)}</td>
                   <td>{item.price}</td>
-                  <td>{item.quanlity}</td>
-                  <td><img src={item.downloadURL} style={{ width: '100px' }} /></td>
+                  <td>{item.quantity}</td>
+                  <td><img src={item.image} style={{ width: '100px' }} /></td>
                   <td>
                     <Button
-                      color="danger"
                       onClick={async () => {
-                        await callAPI(`/products/${item.id}`, "DELETE")
+                        await ProductDataServiceCart.deleteProduct(item.id)
+                        fectProductcart()
                       }}
                     >
                       Xóa
                     </Button>
+
+                  </td>
+                  <td>
+                    <Button
+                      onClick={async () => {
+
+                      }}
+                    >
+                      Thanh toán
+                    </Button>
+
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
         </Col>
+        <Row style={{
+          margin: 'auto'
+        }}><Button style={{ width: '15%', marginRight: '1000000px' }}>Thanh toán tất cả</Button></Row>
       </Row>
-    </Container>
+
+    </Container >
   );
 };
 export default Cart;

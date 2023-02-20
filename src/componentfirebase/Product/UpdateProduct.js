@@ -5,34 +5,37 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from "react-bootstrap";
 import ProductDataService from "../service/product-services";
 import { toast } from 'react-toastify';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 const Update = ({ propsid, isShow, handleClose, onReload }) => {
-    const [name, setname] = useState('');
     const [file, setfile] = useState('');
-    const [price, setprice] = useState(0);
-    const [category, setcategory] = useState(0);
-    const [description, setdescription] = useState('');
-    const [usercreate, setusercreate] = useState();
+    const [cate, setcate] = useState([]);
     const [data, setdata] = useState([]);
     const [valuehoi, setvaluehoi] = useState({});
     const [valuemoi, setvaluemoi] = useState({});
-
+    const [categoryid, setcategoryid] = useState('mChLoQuuPQT49p5WZTLw');
+    const [categoryname, setcategoryname] = useState('Điện thoại');
 
     useEffect(() => {
         fectProduct();
+        fectCate()
         console.log('id', propsid)
     }, []);
 
     function onChangeinput(e) {
         setvaluemoi({ ...valuehoi, [e.target.name]: e.target.value })
     }
-
+    const fectCate= async () => {
+        const data2 = await ProductDataService.getAllCategorys();
+        setcate(data2.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
     const fectProduct = async () => {
         const data2 = await ProductDataService.getAllProducts();
         console.log(data2.docs);
         setdata(data2.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     function gethehe() {
-        const check = data.filter((item) => item.id == propsid)
+        const check = data.filter((item) => item.id === propsid)
         if (check.length > 0) {
             setvaluehoi(check[0])
         }
@@ -41,8 +44,8 @@ const Update = ({ propsid, isShow, handleClose, onReload }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await ProductDataService.updateProductsmoi(propsid, valuemoi,file);
-            console.log('valuemoi', valuemoi, file)
+            await ProductDataService.updateProductsmoi(propsid,valuemoi, file,categoryid);
+            console.log('valuemoi',valuemoi,categoryid,file)
             toast.success('Sửa thành công')
             handleClose()
             onReload()
@@ -74,6 +77,21 @@ const Update = ({ propsid, isShow, handleClose, onReload }) => {
                         <Form.Group className="mb-3" controlId="idprice">
                             <Form.Label>Giá</Form.Label>
                             <Form.Control onFocus={gethehe} type="number" onChange={onChangeinput} name="price" placeholder="Giá" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="idcategory">
+                            <Form.Label>Danh mục</Form.Label>
+                            {/* <Form.Control type="text" onChange={e => { setcategory(e.target.value) }} name="category" placeholder="Danh mục" /> */}
+                            <DropdownButton id="dropdown-basic-button" title={categoryname}>
+                                {cate.map((e) => {
+                                    return (
+                                        <div key={e.id}>
+                                            <Dropdown.Item onClick={() => { setcategoryid(e.id); setcategoryname(e.name) }}>{e.name}</Dropdown.Item>
+                                        </div>
+                                    )
+                                })}
+                            </DropdownButton>
+
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="iddescription">

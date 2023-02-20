@@ -15,6 +15,7 @@ import { async } from "@firebase/util";
 import { toast } from "react-toastify";
 
 const ProductCollectionRef = collection(db, "products");
+const CategoryCollectionRef = collection(db, "category");
 const Category = collection(db, "category");
 class ProductDataService {
     addProducts = (name, file, price, category, description, usercreate) => {
@@ -42,7 +43,7 @@ class ProductDataService {
             alert(error.message);
         };
     }
-    updateProductsmoi = (id, newProduct, file) => {
+    updateProductsmoi = (id, newProduct, file,categoryid) => {
         if (file == '') {
             try {
 
@@ -50,7 +51,7 @@ class ProductDataService {
                     name: newProduct.name,
                     downloadURL: newProduct.downloadURL,
                     price: newProduct.price,
-                    category: newProduct.category,
+                    category: categoryid,
                     description: newProduct.description,
                     usercreate: newProduct.usercreate
                 }))
@@ -73,7 +74,7 @@ class ProductDataService {
                                 name: newProduct.name,
                                 downloadURL: downloadURL,
                                 price: newProduct.price,
-                                category: newProduct.category,
+                                category: categoryid,
                                 description: newProduct.description,
                                 usercreate: newProduct.usercreate
                             })
@@ -95,20 +96,20 @@ class ProductDataService {
     getAllProducts = () => {
         return getDocs(ProductCollectionRef);
     };
+    getAllCategorys = () => {
+        return getDocs(CategoryCollectionRef);
+    };
     getProductswithcategory = (cate) => {
         return getDocs(query(ProductCollectionRef, where("category", "==", cate)));
     };
-    getcategory = (id) => {
-        return getDoc(query(Category), where('id', "==", id));
+    getCategoryID = (id) => {
+        const ProductDoc = doc(db, "category", id);
+        return getDoc(ProductDoc);
     };
 
     getProduct = (id) => {
         const ProductDoc = doc(db, "products", id);
         return getDoc(ProductDoc);
-    };
-    getProduct2 = (id) => {
-        const ProductDoc = doc(db, "products", id);
-        return getDocs(query(ProductDoc), where("uid", "==", id));
     };
     getAllProductsdesc = () => {
         return getDocs(query(ProductCollectionRef, orderBy('price', 'desc')));

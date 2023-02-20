@@ -8,71 +8,40 @@ import {
     updateDoc,
     deleteDoc,
     doc,
-    orderBy, query
+    orderBy, query, where
 } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { async } from "@firebase/util";
 
-const ProductCollectionRef = collection(db, "productcart");
+
+const ProductCollectionRef = collection(db, "carts");
 class ProductDataServiceCart {
-    addproductcart = (name, file, price, category, description, usercreate) => {
+    addproduct = (uid, name, price,category, description, image, usercreate) => {
         try {
-            const storageRef = ref(storage, `images / ${Date.now() + file.name}`);
-            const uploadTask = uploadBytesResumable(storageRef, file);
-            uploadTask.on(
-                (error) => {
-                    alert(error.message);
-                },
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-                        await addDoc(collection(db, "productcart"), {
-                            name: name,
-                            downloadURL: downloadURL,
-                            price: price,
-                            category: category,
-                            description: description,
-                            quantity:0,
-                            status: false,
-                            date:new Date,
-                            usercreate: usercreate
-                        });
-                    });
-                }
-            );
+            return addDoc(ProductCollectionRef, {
+                uid: uid,
+                name: name,
+                category:category,
+                quantity: 1,
+                price: price,
+                description: description,
+                image: image,
+                usercreate: usercreate,
+                status: false
+            });
         } catch (error) {
-            alert(error.message);
-        };
-    }
+            alert(error.message)
+        }
 
-    updateproductcart = (id, name, file, price, category, description, usercreate) => {
-        try {
-            const storageRef = ref(storage, `images / ${Date.now() + file.name}`);
-            const uploadTask = uploadBytesResumable(storageRef, file);
-            uploadTask.on(
-                (error) => {
-                    alert(error.message);
-                },
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-                        await updateDoc(doc(db, "productcart", id), {
-                            name: name,
-                            downloadURL: downloadURL,
-                            price: price,
-                            category: category,
-                            description: description,
-                            usercreate: usercreate
-                        }
-                        );
-                    });
-                }
-            );
-        } catch (error) {
-            alert(error.message);
-        };
-    }
+    };
+
+    updateproduct = (id, setquantity) => {
+        const ProductDoc = doc(db, "carts", id);
+        return updateDoc(ProductDoc, {
+            quantity: setquantity,
+        });
+    };
 
     deleteProduct = (id) => {
-        const ProductDoc = doc(db, "productcart", id);
+        const ProductDoc = doc(db, "carts", id);
         return deleteDoc(ProductDoc);
     };
 
@@ -80,16 +49,15 @@ class ProductDataServiceCart {
         return getDocs(ProductCollectionRef);
     };
 
+    getAllproductcartEmail = (email) => {
+        return getDocs(query(ProductCollectionRef,where("usercreate","==",email)));
+    };
+
     getProduct = (id) => {
-        const ProductDoc = doc(db, "productcart", id);
+        const ProductDoc = doc(db, "carts", id);
         return getDoc(ProductDoc);
     };
-    getAllproductcartdesc = () => {
-        return getDocs(query(ProductCollectionRef, orderBy('price', 'desc')));
-    };
-    getAllproductcartasc = () => {
-        return getDocs(query(ProductCollectionRef, orderBy('price', 'asc')));
-    };
+
 
 }
 

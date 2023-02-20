@@ -787,5 +787,40 @@
       "role": "admin"
     }
   ],
-  "products": []
+  "products": [
+    {
+      "description": "Nhà phát triển\tApple Inc.\nNhà chế tạo\tFoxconn, Pegatron (hợp đồng)\nLoại\tSmartphone\nNgày ra mắt\t\n29 tháng 6 năm 2007[hiện]\nSố lượng bán\t2,2 tỉ (Tính đến 1 tháng 11 năm 2018) [1]\nHệ điều hành\tiOS\nSoC đã sử dụng\t\nChip được sử dụng[hiện]\nCPU\t\nCPU[hiện]\nBộ nhớ\t\nBộ nhớ[hiện]\nLưu trữ\t4, 8, 16, 32, 64, 128, 256 hoặc 512 GB bộ nhớ flash[6]\nHiển thị\t\nMàn hình[hiện]\nĐồ họa\t\nĐồ họa[hiện]\nÂm thanh\t\nBluetoothloa stereo (iPhone 7 trở lên)microphonejack tai nghe 3.5 mm (không có trên iPhone 7 trở lên)cổng Lightning (yêu cầu iOS 10 hoặc mới hơn)\nKết nối\t\nWi-Fi và Bluetooth[hiện]\nCác mô-đen GSM bao gồm:\n\nLTE 700, 2100 MHzUMTS / HSDPA/HSPA+ / DC-HSDPA 850, 900, 1900, 2100 MHzGSM / EDGE 850, 900, 1800, 1900 MHz\nCác mô-đen CDMA bao gồm:\n\nLTE 700 MHzCDMA/EV-DO Rev. A 800, 1900 MHzUMTS / HSDPA/HSPA+/DC-HSDPA 850, 900, 1900, 2100 MHzGSM / EDGE 850, 900, 1800, 1900 MHz\nNăng lượng\t\nPin sạc Li-ion có sẵn[hiện]\nDịch vụ trực tuyến\tiTunes Store, App Store, iCloud, iBookstore, Apple Music\nKích thước\t\nKích thước[hiện]\nTrọng lượng\t\nTrọng lượng[hiện]\nBài viết liên quan\t\niPadiPod TouchSo sánh\nTrang web\tapple.com/iphone/",
+      "price": "9999",
+      "category": "Điện thoại",
+      "usercreate": "lqdung999a@gmail.com",
+      "downloadURL": "https://firebasestorage.googleapis.com/v0/b/mdungapi-71439.appspot.com/o/images%20%2F%201676609054469t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).jpeg?alt=media&token=ce982aa1-5a42-4050-9678-f98236530d3c",
+      "name": "vsmart star5",
+      "id": "IKV36a1KlCWts6YF5vWY",
+      "quanlity": 2
+    },
+    {
+      "usercreate": "lqdung999a@gmail.com",
+      "price": "999",
+      "downloadURL": "https://firebasestorage.googleapis.com/v0/b/mdungapi-71439.appspot.com/o/images%20%2F%201676609325292t%E1%BA%A3i%20xu%E1%BB%91ng%20(4).jpeg?alt=media&token=222198d5-4283-4dc7-a329-0a89601c692d",
+      "category": "Điện thoại",
+      "description": "Nhà phát triển\tApple Inc.\nNhà chế tạo\tFoxconn, Pegatron (hợp đồng)\nLoại\tSmartphone\nNgày ra mắt\t\n29 tháng 6 năm 2007[hiện]\nSố lượng bán\t2,2 tỉ (Tính đến 1 tháng 11 năm 2018) [1]\nHệ điều hành\tiOS\nSoC đã sử dụng\t\nChip được sử dụng[hiện]\nCPU\t\nCPU[hiện]\nBộ nhớ\t\nBộ nhớ[hiện]\nLưu trữ\t4, 8, 16, 32, 64, 128, 256 hoặc 512 GB bộ nhớ flash[6]\nHiển thị\t\nMàn hình[hiện]\nĐồ họa\t\nĐồ họa[hiện]\nÂm thanh\t\nBluetoothloa stereo (iPhone 7 trở lên)microphonejack tai nghe 3.5 mm (không có trên iPhone 7 trở lên)cổng Lightning (yêu cầu iOS 10 hoặc mới hơn)\nKết nối\t\nWi-Fi và Bluetooth[hiện]\nCác mô-đen GSM bao gồm:\n\nLTE 700, 2100 MHzUMTS / HSDPA/HSPA+ / DC-HSDPA 850, 900, 1900, 2100 MHzGSM / EDGE 850, 900, 1800, 1900 MHz\nCác mô-đen CDMA bao gồm:\n\nLTE 700 MHzCDMA/EV-DO Rev. A 800, 1900 MHzUMTS / HSDPA/HSPA+/DC-HSDPA 850, 900, 1900, 2100 MHzGSM / EDGE 850, 900, 1800, 1900 MHz\nNăng lượng\t\nPin sạc Li-ion có sẵn[hiện]\nDịch vụ trực tuyến\tiTunes Store, App Store, iCloud, iBookstore, Apple Music\nKích thước\t\nKích thước[hiện]\nTrọng lượng\t\nTrọng lượng[hiện]\nBài viết liên quan\t\niPadiPod TouchSo sánh\nTrang web\tapple.com/iphone/",
+      "name": "Iphone 5",
+      "id": "Qxb1nyo8X6MtzvLDcuTK",
+      "createAt": "2023-02-20T02:42:01.477Z",
+      "quanlity": 1,
+      "tinhtrang": false
+    },
+    {
+      "name": "Iphone 7 plus",
+      "usercreate": "lqdung999a@gmail.com",
+      "downloadURL": "https://firebasestorage.googleapis.com/v0/b/mdungapi-71439.appspot.com/o/images%20%2F%201676561868789images%20(1).jpeg?alt=media&token=1fe9e7ce-9b46-4141-a9fc-d2f437a75cb1",
+      "category": "Điện thoại",
+      "description": "Nhà phát triển\tApple Inc.\nNhà chế tạo\tFoxconn, Pegatron (hợp đồng)\nLoại\tSmartphone\nNgày ra mắt\t\n29 tháng 6 năm 2007[hiện]\nSố lượng bán\t2,2 tỉ (Tính đến 1 tháng 11 năm 2018) [1]\nHệ điều hành\tiOS\nSoC đã sử dụng\t\nChip được sử dụng[hiện]\nCPU\t\nCPU[hiện]\nBộ nhớ\t\nBộ nhớ[hiện]\nLưu trữ\t4, 8, 16, 32, 64, 128, 256 hoặc 512 GB bộ nhớ flash[6]\nHiển thị\t\nMàn hình[hiện]\nĐồ họa\t\nĐồ họa[hiện]\nÂm thanh\t\nBluetoothloa stereo (iPhone 7 trở lên)microphonejack tai nghe 3.5 mm (không có trên iPhone 7 trở lên)cổng Lightning (yêu cầu iOS 10 hoặc mới hơn)\nKết nối\t\nWi-Fi và Bluetooth[hiện]\nCác mô-đen GSM bao gồm:\n\nLTE 700, 2100 MHzUMTS / HSDPA/HSPA+ / DC-HSDPA 850, 900, 1900, 2100 MHzGSM / EDGE 850, 900, 1800, 1900 MHz\nCác mô-đen CDMA bao gồm:\n\nLTE 700 MHzCDMA/EV-DO Rev. A 800, 1900 MHzUMTS / HSDPA/HSPA+/DC-HSDPA 850, 900, 1900, 2100 MHzGSM / EDGE 850, 900, 1800, 1900 MHz\nNăng lượng\t\nPin sạc Li-ion có sẵn[hiện]\nDịch vụ trực tuyến\tiTunes Store, App Store, iCloud, iBookstore, Apple Music\nKích thước\t\nKích thước[hiện]\nTrọng lượng\t\nTrọng lượng[hiện]\nBài viết liên quan\t\niPadiPod TouchSo sánh\nTrang web\tapple.com/iphone/",
+      "price": "25000000000",
+      "id": "TZ12TU6kHJSyA19b8aAj",
+      "createAt": "2023-02-20T02:42:02.419Z",
+      "quanlity": 1,
+      "tinhtrang": false
+    }
+  ]
 }
