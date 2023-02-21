@@ -30,6 +30,7 @@ import FormForgot from './componentfirebase/Account/ForgotPassword';
 import { ACTION } from './Support/const';
 import { CartContext } from './Support/context';
 import Historypay from './componentfirebase/cart/historypay';
+import ManagementPay from './componentfirebase/cart/managementPay';
 
 
 const listid = {
@@ -100,6 +101,7 @@ function App() {
         <Route path='managementuser' element={<ManageMentUser />} />
         <Route path='cart' element={<Cart currentUser={data} />} />
         <Route path='historypay' element={<Historypay currentUser={data} />} />
+        <Route path='managementPay' element={<ManagementPay currentUser={data} />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
       <Footer />

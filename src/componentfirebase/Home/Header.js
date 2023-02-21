@@ -27,7 +27,12 @@ const Header = ({ authen }) => {
                     <li className="item-lv2">
                         <a className="title-menu-lv2" onClick={() => { navigate('/managementuser') }}>Quản lí tài khoản
                         </a>
-                    </li></>)
+                    </li>
+                    <li className="item-lv2">
+                        <a className="title-menu-lv2" onClick={() => { navigate('/managementPay') }}>Quản lí thanh toán
+                        </a>
+                    </li>
+                </>)
         }
         else {
             return
@@ -77,7 +82,7 @@ const Header = ({ authen }) => {
                                         },
                                     });
 
-                                    
+
                                 }}>Điện Thoại  </a>
                             </li>
                             <li className="item">
@@ -88,7 +93,7 @@ const Header = ({ authen }) => {
                                             id: 'q2SWeeYrlDzXB5qhldfD',
                                         },
                                     });
-                                    }}>TV </a>
+                                }}>TV </a>
                             </li>
                             <li className="item">
                                 <a className="content" onClick={() => {
@@ -98,7 +103,7 @@ const Header = ({ authen }) => {
                                             id: 'zo79dJmIpvqIYD4pz9xl',
                                         },
                                     });
-                                    }}>Máy Lọc Không Khí </a>
+                                }}>Máy Lọc Không Khí </a>
                             </li>
                             <li className="item">
                                 <a className="content" onClick={() => {

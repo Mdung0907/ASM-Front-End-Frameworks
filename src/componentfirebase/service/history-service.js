@@ -33,6 +33,9 @@ class ProductDataServiceHistory {
 
     };
 
+    getAllproductHistory = () => {
+        return getDocs(query(ProductCollectionRef));
+    };
     getAllproductHistoryEmail = (email) => {
         return getDocs(query(ProductCollectionRef, where("usercreate", "==", email)));
     };

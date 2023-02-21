@@ -42,18 +42,18 @@ function Information({ currentUser }) {
 
     }
 
-    function CheckRoleButton() {
-        if (currentUser.role === 'admin') {
-            return
-        } else {
-            return (
-                <button style={{ color: 'red' }} onClick={async () => {
-                    // deleteAccount(currentUser)
+    // function CheckRoleButton() {
+    //     if (currentUser.role === 'admin') {
+    //         return
+    //     } else {
+    //         return (
+    //             <button style={{ color: 'red' }} onClick={async () => {
+    //                 // deleteAccount(currentUser)
                     
-                }}>Xóa tài khoản</button>
-            )
-        }
-    }
+    //             }}>Xóa tài khoản</button>
+    //         )
+    //     }
+    // }
 
     const Profile = () => {
         if (ischeck) {
@@ -76,7 +76,7 @@ function Information({ currentUser }) {
 
     return (
         <>
-            <Table striped bordered hover variant="dark" >
+            <Table striped bordered hover variant="white" >
                 <tbody className='in4'>
                     <tr >
                         <td>Tên</td>
@@ -96,7 +96,8 @@ function Information({ currentUser }) {
 
                 </tbody>
             </Table>
-            <CheckRoleButton />
+            <p>Lưu ý: Nếu bạn vừa dùng tính năng quên mật khẩu, mật khẩu mới sẽ không cập nhật vui lòng đổi mật khẩu lần nữa để cập nhật.</p>
+            {/* <CheckRoleButton /> */}
 
             <Profile />
         </>
