@@ -328,14 +328,16 @@ input[type="search"]:focus {
 
 /* Css search */
 .search {
-  width: 20.5%;
-  margin-left: 3%;
+  width: 50%;
+  margin-left: 6%;
+}
+.topnav{
+  display: flex;
 }
 
 
-
 .topnav input {
-  width: 100%;
+  width: 41%;
   height: 40px;
 }
 
@@ -440,3 +442,8 @@ li>a {
   padding-bottom: 2%;
 }
 
+.dropbt{
+  text-align: left;
+  margin-left: 6%;
+  margin-top: 0.3%;
+}

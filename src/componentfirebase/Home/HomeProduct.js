@@ -10,6 +10,8 @@ import { Button, Col, Row } from "react-bootstrap";
 import { useContext } from "react";
 import { CartContext } from "../../Support/context.js";
 import Spinner from "react-bootstrap/Spinner";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 function Posts({ currentUser }) {
   const [data, setdata] = useState([])
   const [cate, setcate] = useState([])
@@ -28,6 +30,9 @@ function Posts({ currentUser }) {
     fectProduct()
     fectProductcart()
     fectcategory()
+  }, []);
+  useEffect(() => {
+      fectProduct()
   }, [carts.id]);
 
   const fectProduct = async () => {
@@ -49,6 +54,16 @@ function Posts({ currentUser }) {
     const check = cate.filter((item) => item.id === id)
     return check[0].name
   }
+
+  const fectProductdesc = async () => {
+    const data = await ProductDataService.getAllProductsdesc();
+    setdata(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
+  const fectProductasc = async () => {
+    const data = await ProductDataService.getAllProductsasc();
+    setdata(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
 
 
   const addToCart = async (e, postid, name, price, category, description, image, usercreate) => {
@@ -85,7 +100,7 @@ function Posts({ currentUser }) {
   }
   if (data.length === 0) {
     return (
-      <div style={{ display: 'block', width: 1000, padding: 30,margin:'auto' ,textAlign:'center'}}>
+      <div style={{ display: 'block', width: 1000, padding: 30, margin: 'auto', textAlign: 'center' }}>
         <Spinner animation="grow" variant="warning" />
       </div>
     )
@@ -101,11 +116,17 @@ function Posts({ currentUser }) {
             placeholder={'Nhập từ khóa tìm kiếm...'}
             data={data}
           />
+          <div>
+            <DropdownButton className="dropbt" id="dropdown-basic-button" title='Sắp xếp' >
+              <Dropdown.Item onClick={fectProductasc}>Giảm</Dropdown.Item>
+              <Dropdown.Item onClick={fectProductdesc}>Tăng</Dropdown.Item>
+            </DropdownButton>
+          </div>
           <div className="App" >
             {currenPost && currenPost.map((post) => {
               return (
                 <div className="img-wrapper" key={post.id} >
-                  <img src={post?.downloadURL} style={{width:'250px',height:'180px'}}/>
+                  <img src={post?.downloadURL} style={{ width: '100%', height: '200px' }} />
                   <p className="categorypost">{getNameCategory(post.category)}</p>
                   <p className="name">
                     <Link to={`/detail/${post.id}`} style={{ textDecoration: 'none', color: 'black', fontWeight: '600' }}> {post.name}</Link></p>

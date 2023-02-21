@@ -112,10 +112,10 @@ class ProductDataService {
         return getDoc(ProductDoc);
     };
     getAllProductsdesc = () => {
-        return getDocs(query(ProductCollectionRef, orderBy('price', 'desc')));
+        return getDocs(query(ProductCollectionRef,orderBy('price', 'desc')));
     };
     getAllProductsasc = () => {
-        return getDocs(query(ProductCollectionRef, orderBy('price', 'asc')));
+        return getDocs(query(ProductCollectionRef,orderBy('price', 'asc')));
     };
 
 }

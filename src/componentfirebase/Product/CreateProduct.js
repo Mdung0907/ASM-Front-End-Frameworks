@@ -7,7 +7,6 @@ import ProductDataService from "../service/product-services";
 import { toast } from 'react-toastify';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { isEmpty } from '@firebase/util';
 
 const AddProduct = ({ current, isShow, handleClose, Reload }) => {
     const [cate, setcate] = useState([]);
@@ -75,7 +74,6 @@ const AddProduct = ({ current, isShow, handleClose, Reload }) => {
 
                         <Form.Group className="mb-3" controlId="idcategory">
                             <Form.Label>Danh mục</Form.Label>
-                            {/* <Form.Control type="text" onChange={e => { setcategory(e.target.value) }} name="category" placeholder="Danh mục" /> */}
                             <DropdownButton id="dropdown-basic-button" title={categoryname}>
                                 {cate.map((e) => {
                                     return (

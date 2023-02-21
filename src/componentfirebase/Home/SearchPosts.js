@@ -34,6 +34,7 @@ function SearchBar({ placeholder, data }) {
                             setWordEntered(''); setFilteredData([])
                         }, 150)
                     }}></input>
+
             </div>
             {filteredData.length != 0 && (
                 <div className="dataResult">
