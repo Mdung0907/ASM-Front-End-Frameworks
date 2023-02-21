@@ -1,18 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import { BsFillCartFill } from 'react-icons/bs';
-import { logout } from "../firebase/config";
+import { logout } from "../../firebase/config";
 import { useState } from "react";
-import Posts from "./HomeProduct";
+import { useContext } from "react";
+import { CartContext } from "../../Support/context";
+import { ACTION } from "../../Support/const";
 
 const Header = ({ authen }) => {
     const navigate = useNavigate();
-    const [cate, setcate] = useState(1)
     const logoutheadr = () => {
         authen = null
         logout()
         navigate('/')
         window.location.reload()
     };
+    const { cartReducer: carts, cartDispatch: dispatch } =
+        useContext(CartContext);
     function PhanQuyen() {
         if (authen.role === 'admin') {
             return (
@@ -66,19 +69,56 @@ const Header = ({ authen }) => {
                     <nav className="menu">
                         <ul className="nameul">
                             <li className="item">
-                                <a className="content" onClick={()=>{setcate(1)}}>Điện Thoại  </a>
+                                <a className="content" onClick={() => {
+                                    dispatch({
+                                        type: ACTION.GETID_CATEGORY,
+                                        payload: {
+                                            id: 'mChLoQuuPQT49p5WZTLw',
+                                        },
+                                    });
+
+                                    
+                                }}>Điện Thoại  </a>
                             </li>
                             <li className="item">
-                                <a className="content" onClick={()=>{setcate(2)}}>TV </a>
+                                <a className="content" onClick={() => {
+                                    dispatch({
+                                        type: ACTION.GETID_CATEGORY,
+                                        payload: {
+                                            id: 'q2SWeeYrlDzXB5qhldfD',
+                                        },
+                                    });
+                                    }}>TV </a>
                             </li>
                             <li className="item">
-                                <a className="content" onClick={()=>{setcate(3)}}>Máy Lọc Không Khí </a>
+                                <a className="content" onClick={() => {
+                                    dispatch({
+                                        type: ACTION.GETID_CATEGORY,
+                                        payload: {
+                                            id: 'zo79dJmIpvqIYD4pz9xl',
+                                        },
+                                    });
+                                    }}>Máy Lọc Không Khí </a>
                             </li>
                             <li className="item">
-                                <a className="content" onClick={()=>{setcate(4)}}>SmartHome </a>
+                                <a className="content" onClick={() => {
+                                    dispatch({
+                                        type: ACTION.GETID_CATEGORY,
+                                        payload: {
+                                            id: 'Jj9KbrRkoFsfwEKF1vNR',
+                                        },
+                                    });
+                                }}>SmartHome </a>
                             </li>
                             <li className="item">
-                                <a className="content" onClick={()=>{setcate(5)}}>SmartCiTy </a>
+                                <a className="content" onClick={() => {
+                                    dispatch({
+                                        type: ACTION.GETID_CATEGORY,
+                                        payload: {
+                                            id: 'otucMcTJ7ZWDHl1tSBr7',
+                                        },
+                                    });
+                                }}>SmartCiTy </a>
                             </li>
                             <li className="item">
                                 <a className="content" >Tin Tức </a>

@@ -7,9 +7,6 @@ import { updateProfile, updateEmail, updatePassword } from 'firebase/auth';
 import AccountDataService from '../service/account-service'
 import { auth } from '../../firebase/config';
 import { toast } from 'react-toastify';
-import {
-    deleteAccount,
-  } from "../../firebase/config";
 
 
 function Information({ currentUser }) {

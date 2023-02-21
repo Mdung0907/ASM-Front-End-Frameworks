@@ -1,17 +1,17 @@
 
 import './App.css';
-import Header from './Component/Header'
-import Footer from './Component/Footer'
-import React from 'react'
+import Header from './componentfirebase/Home/Header'
+import Footer from './componentfirebase/Home/Footer'
+import React, { useReducer } from 'react'
 import {
   Routes, Router, Route, BrowserRouter
 
 } from "react-router-dom";
 import Login from './componentfirebase/Account/Login'
 import Register from './componentfirebase/Account/Register'
-import NoPage from './Component/NoPage';
-import Posts from './Component/HomeProduct';
-import PostDetail from './Component/Detail';
+import NoPage from './componentfirebase/Home/NoPage';
+import Posts from './componentfirebase/Home/HomeProduct';
+import PostDetail from './componentfirebase/Home/Detail';
 import ManageMent from './componentfirebase/Product/ManagementProduct';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,12 +24,35 @@ import {
   collection,
   where,
 } from "firebase/firestore";
-import './Component/Infomation.css'
 import ManageMentUser from './componentfirebase/Account/ManagementUser';
 import Cart from './componentfirebase/cart/cart';
 import FormForgot from './componentfirebase/Account/ForgotPassword';
+import { ACTION } from './Support/const';
+import { CartContext } from './Support/context';
+import Historypay from './componentfirebase/cart/historypay';
+
+
+const listid = {
+  id: ''
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case ACTION.GETID_CATEGORY: {
+      const { id = {} } = action.payload
+      return {
+        id:id
+      };
+    }
+    default:
+      return state;
+  }
+}
+
+
 function App() {
   const [data, setdata] = useState([])
+  const [state, dispatch] = useReducer(reducer, listid);
   const log = useRef(true)
   useEffect(() => {
     if (log.current) {
@@ -40,6 +63,7 @@ function App() {
         } else {
           console.log("user is logged out")
         }
+
       });
     }
   }
@@ -58,21 +82,29 @@ function App() {
 
   return (
     <div>
+       <CartContext.Provider
+          value={{
+            cartReducer: state,
+            cartDispatch: dispatch,
+          }}
+        >
       <Header authen={data} />
       <Routes>
         <Route path='/' element={<Posts currentUser={data} />} />
         <Route path='login' element={<Login />} />
         <Route path='forgotpassword' element={<FormForgot />} />
         <Route path='register' element={<Register />} />
-        <Route path="/detail/:id" element={<PostDetail currentUser={data}/>} />
-        <Route path='management' element={<ManageMent current={data}/>} />
+        <Route path="/detail/:id" element={<PostDetail currentUser={data} />} />
+        <Route path='management' element={<ManageMent current={data} />} />
         <Route path='infomation' element={<Information currentUser={data} />} />
         <Route path='managementuser' element={<ManageMentUser />} />
-        <Route path='cart' element={<Cart currentUser={data}/>} />
+        <Route path='cart' element={<Cart currentUser={data} />} />
+        <Route path='historypay' element={<Historypay currentUser={data} />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
       <Footer />
       <ToastContainer />
+      </CartContext.Provider>
     </div>
   );
 

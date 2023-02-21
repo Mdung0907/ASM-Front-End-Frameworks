@@ -1,34 +1,37 @@
 import ReactPaginate from "react-paginate";
 import { useEffect, useRef, useState } from "react";
-import { callAPI } from './API.js'
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchPosts.js";
-import Slide from './Slide'
-import ProductDataService from "../componentfirebase/service/product-services.js";
-import ProductDataServiceCart from "../componentfirebase/service/product-services-tocart.js";
+import Slide from '../../Support/Slide'
+import ProductDataService from "../service/product-services.js";
+import ProductDataServiceCart from "../service/product-services-tocart.js";
 import { toast } from "react-toastify";
 import { Button, Col, Row } from "react-bootstrap";
+import { useContext } from "react";
+import { CartContext } from "../../Support/context.js";
+import Spinner from "react-bootstrap/Spinner";
 function Posts({ currentUser }) {
   const [data, setdata] = useState([])
   const [cate, setcate] = useState([])
   const [currentpage, setcurrentpage] = useState(1);
   const [datacart, setdatacart] = useState([])
   const currenPost = data.slice(currentpage * 12 - 12, currentpage * 12)
+
+
+  const { cartReducer: carts, cartDispatch: dispatch } =
+    useContext(CartContext);
   const handlePageClick = (event) => {
     const newVal = event.selected;
     setcurrentpage(newVal + 1);
   };
-  const log = useRef(true)
   useEffect(() => {
-    if (log.current) {
-      log.current = false
-      fectProduct()
-      fectProductcart()
-      fectcategory()
-    }
-  }, []);
+    fectProduct()
+    fectProductcart()
+    fectcategory()
+  }, [carts.id]);
+
   const fectProduct = async () => {
-    const data2 = await ProductDataService.getAllProducts();
+    const data2 = await ProductDataService.getProductswithcategory(carts.id || 'mChLoQuuPQT49p5WZTLw');
     console.log(data2.docs);
     setdata(data2.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
@@ -38,17 +41,17 @@ function Posts({ currentUser }) {
     setdatacart(data2.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
   const fectcategory = async () => {
-    const data2=await ProductDataService.getAllCategorys()
+    const data2 = await ProductDataService.getAllCategorys()
     setcate(data2.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-};
+  };
 
-function getNameCategory(id){
-    const check=cate.filter((item)=>item.id===id)
+  function getNameCategory(id) {
+    const check = cate.filter((item) => item.id === id)
     return check[0].name
-}
+  }
 
 
-  const addToCart = async (e, postid, name, price,category, description, image, usercreate) => {
+  const addToCart = async (e, postid, name, price, category, description, image, usercreate) => {
     e.preventDefault();
     if (currentUser) {
       const cartItems = datacart.filter(
@@ -66,21 +69,27 @@ function getNameCategory(id){
             fectProductcart()
           })
         } else {
-          await ProductDataServiceCart.addproduct(postid, name, price,category, description, image, usercreate)
+          await ProductDataServiceCart.addproduct(postid, name, price, category, description, image, usercreate)
           toast.success('Thêm thành công')
           fectProductcart()
         }
       } else {
-        await ProductDataServiceCart.addproduct(postid, name, price,category, description, image, usercreate)
+        await ProductDataServiceCart.addproduct(postid, name, price, category, description, image, usercreate)
         toast.success('Thêm thành công')
         fectProductcart()
       }
-    }else{
+    } else {
       toast.error('Vui lòng đăng nhập')
       return
     }
   }
-
+  if (data.length === 0) {
+    return (
+      <div style={{ display: 'block', width: 1000, padding: 30,margin:'auto' ,textAlign:'center'}}>
+        <Spinner animation="grow" variant="warning" />
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -96,13 +105,13 @@ function getNameCategory(id){
             {currenPost && currenPost.map((post) => {
               return (
                 <div className="img-wrapper" key={post.id} >
-                  <img src={post?.downloadURL} />
+                  <img src={post?.downloadURL} style={{width:'250px',height:'180px'}}/>
                   <p className="categorypost">{getNameCategory(post.category)}</p>
                   <p className="name">
                     <Link to={`/detail/${post.id}`} style={{ textDecoration: 'none', color: 'black', fontWeight: '600' }}> {post.name}</Link></p>
                   <p>${post.price}</p>
                   <Button onClick={e => {
-                    addToCart(e, post.id, post.name, post.price,post.category, post.description, post.downloadURL, currentUser.email)
+                    addToCart(e, post.id, post.name, post.price, post.category, post.description, post.downloadURL, currentUser.email)
                   }}
                   >Mua</Button>
                 </div>

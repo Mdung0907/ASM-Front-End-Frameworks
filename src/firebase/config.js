@@ -18,14 +18,25 @@ import {
 } from "firebase/firestore";
 import { getStorage, ref } from 'firebase/storage'
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDpQX1oZoCK_1-uY2qzIx5-VSVlbAwmM5M",
+//   authDomain: "mdungapi-71439.firebaseapp.com",
+//   projectId: "mdungapi-71439",
+//   storageBucket: "mdungapi-71439.appspot.com",
+//   messagingSenderId: "639956086060",
+//   appId: "1:639956086060:web:072c07d3d63d776bc21089"
+// };
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDpQX1oZoCK_1-uY2qzIx5-VSVlbAwmM5M",
-  authDomain: "mdungapi-71439.firebaseapp.com",
-  projectId: "mdungapi-71439",
-  storageBucket: "mdungapi-71439.appspot.com",
-  messagingSenderId: "639956086060",
-  appId: "1:639956086060:web:072c07d3d63d776bc21089"
+  apiKey: "AIzaSyAbL0o1sofCre9sWohPEcC14okhzx7-Cys",
+  authDomain: "mdung-811dc.firebaseapp.com",
+  projectId: "mdung-811dc",
+  storageBucket: "mdung-811dc.appspot.com",
+  messagingSenderId: "337245016760",
+  appId: "1:337245016760:web:d65e5d4fa7038d4f72da4d"
 };
+
 
 // Initialize Firebase
 
@@ -84,7 +95,7 @@ const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
     alert("Đã gửi mật khẩu mới đến Email của bạn!");
-    window.location.href('/login')
+    window.location.href=('/login')
   }
   catch (err) {
     console.error(err);

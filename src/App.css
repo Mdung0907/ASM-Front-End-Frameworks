@@ -328,28 +328,28 @@ input[type="search"]:focus {
 
 /* Css search */
 .search {
-  width: 30%;
+  width: 20.5%;
+  margin-left: 3%;
 }
 
-.topnav {
-  margin-left: 10%;
-}
+
 
 .topnav input {
-  width: 60%;
+  width: 100%;
   height: 40px;
 }
 
 .dataResult {
   position: absolute;
   background-color: white;
-  width: 14%;
-  margin-left: 6.5%;
+  width: 16.5%;
 }
-.dataResult img{
+
+.dataResult img {
   width: 100px;
   height: 100px;
 }
+
 .dataItem {
   text-decoration: none;
 }
@@ -406,20 +406,37 @@ li>a {
   text-decoration: none;
   color: black;
 }
-.img-detail{
+
+.img-detail {
   display: flex;
 }
-.detailimg{
-  width:50%;
+
+.detailimg {
+  width: 50%;
   display: flex;
 }
-.img-detail img{
+
+.img-detail img {
   width: 500px;
   height: 400px;
 }
-.detail{
+
+.detail {
   margin: auto;
   text-align: left;
   padding-left: 5%;
+}
+
+/*infomation*/
+.in4 td {
+  border: none;
+}
+
+.changeinfo {
+  width: 30%;
+  margin: auto;
+  display: block;
+  font-size: 20px;
+  padding-bottom: 2%;
 }
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import ProductDataService from "../componentfirebase/service/product-services.js";
-import ProductDataServiceCart from "../componentfirebase/service/product-services-tocart.js";
+import ProductDataService from "../service/product-services.js";
+import ProductDataServiceCart from "../service/product-services-tocart.js";
 import { toast } from "react-toastify";
 const PostDetail = ({ currentUser }) => {
   const [data, setdata] = useState([])
@@ -38,7 +38,6 @@ const PostDetail = ({ currentUser }) => {
         );
         if (newitem.length > 0) {
           newitem.map((item) => {
-            console.log('item', item)
             ProductDataServiceCart.updateproduct(item.id, item.quantity + 1)
             toast.success('Thêm thành công')
             fectProductcart()
@@ -73,7 +72,6 @@ const PostDetail = ({ currentUser }) => {
           </p>
 
           <Button onClick={e => {
-            alert(id)
             addToCart(e,id, data.name, data.price,data.category ,data.description, data.downloadURL, currentUser.email)
           }}>Mua</Button>
         </div>

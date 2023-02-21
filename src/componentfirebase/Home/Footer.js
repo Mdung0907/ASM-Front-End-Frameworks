@@ -38,14 +38,14 @@ export default function Footer() {
                         </div>
                         <div className="chau3">
                             <div className="chat">
-                                <p> Công ty Cổ phần Nghiên cứu và Sản xuất <br></br> Vinsmart</p>
+                                <p> Công ty Cổ phần Nghiên cứu và Sản xuất <br></br> Website/Application</p>
 
 
                                 <div className="sdtmail">
                                     <p className="mail">
                                         1900 23 23 89 <br></br>
                                         <span>(1000 VNĐ/phút)</span> <br></br>
-                                        E-mail:care@vinsmart.net.vn
+                                        E-mail: luongquangdungmdungcv@gmail.com
                                     </p>
 
                                 </div>
@@ -212,7 +212,7 @@ export default function Footer() {
 
                                 </div>
                                 <div className="copy">
-                                    <p>Copyright © 2021 VSMART. All rights reserved.</p>
+                                    <p style={{color:'white'}}>Copyright © 2021 MDUNG. Developer.</p>
                                 </div>
                             </div>
                             <div className="child">

@@ -8,24 +8,23 @@ import {
     updateDoc,
     deleteDoc,
     doc,
-    orderBy, query, where
+    orderBy, query, where,
 } from "firebase/firestore";
 
 
 const ProductCollectionRef = collection(db, "carts");
 class ProductDataServiceCart {
-    addproduct = (uid, name, price,category, description, image, usercreate) => {
+    addproduct = (uid, name, price, category, description, image, usercreate) => {
         try {
             return addDoc(ProductCollectionRef, {
                 uid: uid,
                 name: name,
-                category:category,
+                category: category,
                 quantity: 1,
                 price: price,
                 description: description,
                 image: image,
                 usercreate: usercreate,
-                status: false
             });
         } catch (error) {
             alert(error.message)
@@ -50,8 +49,9 @@ class ProductDataServiceCart {
     };
 
     getAllproductcartEmail = (email) => {
-        return getDocs(query(ProductCollectionRef,where("usercreate","==",email)));
+        return getDocs(query(ProductCollectionRef, where("usercreate", "==", email)));
     };
+
 
     getProduct = (id) => {
         const ProductDoc = doc(db, "carts", id);
