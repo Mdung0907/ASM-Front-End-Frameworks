@@ -71,7 +71,11 @@ function ManageMent({ current }) {
 
     };
 
-
+    if(current.role!='admin'){
+        return(
+            <p style={{textAlign:'center'}}>Không có quyền truy cập</p>
+        )
+    }
     return (
         <div style={{ marginTop: '2%' }}>
             <div style={{ fontWeight: '600', fontSize: '22px', marginBottom: '1%' }}>Quản lý sản phẩm</div>

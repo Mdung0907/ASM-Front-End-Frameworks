@@ -98,7 +98,7 @@ function App() {
         <Route path="/detail/:id" element={<PostDetail currentUser={data} />} />
         <Route path='management' element={<ManageMent current={data} />} />
         <Route path='infomation' element={<Information currentUser={data} />} />
-        <Route path='managementuser' element={<ManageMentUser />} />
+        <Route path='managementuser' element={<ManageMentUser current={data}/>} />
         <Route path='cart' element={<Cart currentUser={data} />} />
         <Route path='historypay' element={<Historypay currentUser={data} />} />
         <Route path='managementPay' element={<ManagementPay currentUser={data} />} />

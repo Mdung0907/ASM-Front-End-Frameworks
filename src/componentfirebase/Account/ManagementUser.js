@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import AccountDataService from '../service/account-service.js';
 
 
-function ManageMentUser() {
+function ManageMentUser({current}) {
     const [wordEntered, setWordEntered] = useState('');
     const [data, setdata] = useState([])
     const log = useRef(true)
@@ -46,6 +46,11 @@ function ManageMentUser() {
         }
 
     };
+    if(current.role!='admin'){
+        return(
+            <p style={{textAlign:'center'}}>Không có quyền truy cập</p>
+        )
+    }
     return (
         <div style={{marginTop:'2%'}}>
             <div style={{ fontWeight: '600', fontSize: '22px', marginBottom: '1%' }}>Quản lý tài khoản</div>

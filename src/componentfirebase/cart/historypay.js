@@ -44,6 +44,7 @@ const Historypay = ({ currentUser }) => {
     const check = cate.filter((item) => item.id === id)
     return check[0].name;
   }
+
   return (
     <Container>
       <Row>

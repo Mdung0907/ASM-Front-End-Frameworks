@@ -34,6 +34,11 @@ const ManagementPay = ({ currentUser }) => {
     const check = cate.filter((item) => item.id === id)
     return check[0].name;
   }
+  if(currentUser.role!='admin'){
+    return(
+        <p style={{textAlign:'center'}}>Không có quyền truy cập</p>
+    )
+}
   return (
     <Container>
       <Row>
